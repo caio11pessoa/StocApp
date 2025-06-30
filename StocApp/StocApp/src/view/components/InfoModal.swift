@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct Movimentacao {
-    var equipamentoNome: String
-    var responsavel: String
-    var data: Date
-    var descricao: String
-    var imagemNome: String
-}
+//struct Movimentacao {
+//    var equipamentoNome: String
+//    var responsavel: String
+//    var data: Date
+//    var descricao: String
+//    var imagemNome: String
+//}
 
 extension Date{
     func formatada() -> String {
@@ -24,7 +24,7 @@ extension Date{
 }
 
 struct InfoModal: View {
-    let movimentacao: Movimentacao
+    let movimentacao: Moviment
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -36,7 +36,7 @@ struct InfoModal: View {
                 .padding(.top,8)
             
             HStack(alignment: .center, spacing: 16) {
-                Image(movimentacao.imagemNome)
+                Image(systemName: "person")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(10)
@@ -48,7 +48,7 @@ struct InfoModal: View {
                 
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(movimentacao.equipamentoNome)
+                    Text(movimentacao.equipamento.nome)
                         .font(.headline)
                         .foregroundColor(.black)
                     
@@ -65,7 +65,7 @@ struct InfoModal: View {
             .padding(.horizontal)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(movimentacao.descricao)
+                Text("Descricao")
                     .font(.body)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
@@ -101,5 +101,6 @@ struct InfoModal: View {
 }
 
 #Preview {
-    InfoModal(movimentacao: .init(equipamentoNome: "vazio", responsavel: "Vazio", data: .now, descricao: "vazia", imagemNome: "name"), isPresented: .constant(true))
+//    InfoModal(movimentacao: .init(equipamentoNome: "equipamentoNome", responsavel: "responsavel", data: .now, descricao: "descricao", imagemNome: "imagemNome"), isPresented: .constant(true))
+    InfoModal(movimentacao: .init(equipamento: .init(nome: "nome do equipamento", tipo: .informatica, quantidade: 10), data: .now, dataEntrega: .now, responsavel: "Responsável"), isPresented: .constant(true))
 }
