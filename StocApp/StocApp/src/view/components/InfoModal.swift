@@ -16,7 +16,7 @@ import SwiftUI
 //}
 
 extension Date{
-    func formatada() -> String {
+    func formated() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         return formatter.string(from: self)
@@ -24,7 +24,7 @@ extension Date{
 }
 
 struct InfoModal: View {
-    let movimentacao: Moviment
+    let moviment: Moviment
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -48,15 +48,15 @@ struct InfoModal: View {
                 
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(movimentacao.equipamento.nome)
+                    Text(moviment.equipamento.nome)
                         .font(.headline)
                         .foregroundColor(.black)
                     
-                    Text(movimentacao.responsavel)
+                    Text(moviment.responsavel)
                         .font(.headline)
                         .foregroundColor(.black)
                     
-                    Text(movimentacao.data.formatada())
+                    Text(moviment.data.formated())
                         .font(.headline)
                         .foregroundColor(.black)
                 }
@@ -102,5 +102,5 @@ struct InfoModal: View {
 
 #Preview {
 //    InfoModal(movimentacao: .init(equipamentoNome: "equipamentoNome", responsavel: "responsavel", data: .now, descricao: "descricao", imagemNome: "imagemNome"), isPresented: .constant(true))
-    InfoModal(movimentacao: .init(equipamento: .init(nome: "nome do equipamento", tipo: .informatica, quantidade: 10), data: .now, dataEntrega: .now, responsavel: "Responsável"), isPresented: .constant(true))
+    InfoModal(moviment: .init(equipamento: .init(nome: "Equipament Name", tipo: .informatica, quantidade: 10), data: .now, dataEntrega: .now, responsavel: "Responser"), isPresented: .constant(true))
 }
