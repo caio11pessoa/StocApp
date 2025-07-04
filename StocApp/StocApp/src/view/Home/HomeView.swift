@@ -11,7 +11,7 @@ struct HomeView: View {
     var body: some View{
         NavigationStack{
             VStack{
-                Text("Tela Home")
+                Text("Tela Inicial")
             }
             
             .navigationTitle("LoopStock")
