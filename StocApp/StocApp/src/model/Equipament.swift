@@ -6,26 +6,43 @@
 //
 
 import Foundation
+import SwiftData
 
-/// Modelo para representar um Equipamento
-struct Equipament: Identifiable, Codable {
-    let id: UUID                      // Identificador único do equipamento
-    var nome: String                  // Nome do equipamento
-    var tipo: EquipamentType         // Tipo ou categoria do equipamento
-    var quantidade: Int               // Quantidade disponível do equipamento
-
-    /// Exemplo mockado para testes do Equipamento
-    static let exemplo = Equipament(
-        nome: "Notebook",              // Nome do equipamento
-        tipo: .informatica,            // Tipo do equipamento
-        quantidade: 5                  // Quantidade do equipamento
-    )
-
-    /// Inicia a struct Equipamento
-    init(id: UUID = UUID(), nome: String, tipo: EquipamentType, quantidade: Int) {
+@Model
+class Equipment{
+    @Attribute(.unique)
+    var id: UUID
+    var name: String
+    var type: String
+    var quantity: Int
+    var idescription: String
+    var image: String
+    
+    init(
+        id: UUID = UUID(),
+        name: String,
+        type: String,
+        quantity: Int,
+        idescription: String,
+        image: String
+    ) {
         self.id = id
-        self.nome = nome
-        self.tipo = tipo
-        self.quantidade = quantidade
+        self.name = name
+        self.type = type
+        self.quantity = quantity
+        self.idescription = idescription
+        self.image = image
     }
+    
+    static let example = Equipment(
+        name: "Mouse",
+        type: "Informatics",
+        quantity: 5,
+        idescription: "Equipament used to perform actions on the screen",
+        image: "mouse_image"
+        
+        
+        
+    )
+    
 }

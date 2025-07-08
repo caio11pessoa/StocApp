@@ -6,29 +6,33 @@
 //
 
 import Foundation
+import SwiftData
 
-// Modelo que representa uma movimentação de equipamento
-struct Moviment: Identifiable, Codable {
-    let id: UUID                           // Identificador único da movimentação
-    var equipamento: Equipament           // Equipamento que foi movimentado
-    var data: Date                         // Data da retirada do equipamento
-    var dataEntrega: Date                  // Data prevista para a devolução do equipamento
-    var responsavel: String                // Nome do responsável pela movimentação
 
-    /// Exemplo mockado para testes
-    static let exemplo = Moviment(
-        equipamento: Equipament.exemplo,  // Equipamento mockado como exemplo
-        data: Date(),                      // Data atual como data de retirada
-        dataEntrega: Calendar.current.date(byAdding: .day, value: 7, to: Date())!, // Data de entrega prevista para 7 dias após a retirada
-        responsavel: "Rafael e Pedro Henrique"          // Nome do responsável pela movimentação
-    )
-
-    /// Inicia a struct Movimentacao
-    init(id: UUID = UUID(), equipamento: Equipament, data: Date, dataEntrega: Date, responsavel: String) {
+@Model
+class Movement{
+    @Attribute(.unique)
+    var id: UUID
+    var equipment: Equipment?
+    var loanDate: Date
+    var expectedReturnDate: Date
+    var responsible: String
+    
+    
+    //Inicializador da class Movement
+    
+    init(
+        id: UUID = UUID(),  //ID automático se não for fornecido
+        equipment: Equipment?, //equipamento que tem analogia com o movimento
+        loanDate: Date,  //data do dia que o user fez o empréstimo
+        expectedReturnDate: Date, // Dia da Devolução
+        responsible: String
+    ) {
         self.id = id
-        self.equipamento = equipamento
-        self.data = data
-        self.dataEntrega = dataEntrega
-        self.responsavel = responsavel
+        self.equipment = equipment
+        self.loanDate = loanDate
+        self.expectedReturnDate = expectedReturnDate
+        self.responsible = responsible
     }
 }
+
