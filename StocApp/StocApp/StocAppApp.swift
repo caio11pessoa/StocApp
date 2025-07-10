@@ -12,7 +12,7 @@ import SwiftData
 struct StocAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
