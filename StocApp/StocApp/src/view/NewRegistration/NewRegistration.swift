@@ -21,20 +21,7 @@ struct NewRegistration: View {
                     
                     // Objeto
                     Section {
-                    VStack(alignment: .leading, spacing: 8) {
-                            HStack(spacing: 12) {
-                                Image("defaultCard")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                                Text("Macbook")
-                                    .font(.body)
-                                    .foregroundColor(.primary)
-                                Spacer()
-                            }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
-                        }
+                        CardObject(name: "Computador")
                         
                     } header: {
                         Text("Objeto")
