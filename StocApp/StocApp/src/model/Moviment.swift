@@ -10,7 +10,7 @@ import SwiftData
 
 
 @Model
-class Movement{
+class Moviment{
     @Attribute(.unique)
     var id: UUID
     var equipment: Equipment?

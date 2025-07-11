@@ -24,7 +24,7 @@ extension Date{
 }
 
 struct InfoModal: View {
-    let moviment: Moviment
+//    let moviment: Moviment
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -48,15 +48,18 @@ struct InfoModal: View {
                 
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(moviment.equipamento.nome)
+//                    Text(moviment.equipamento.nome)
+                    Text("NomeEquipamento")
                         .font(.headline)
                         .foregroundColor(.black)
                     
-                    Text(moviment.responsavel)
+//                    Text(moviment.responsavel)
+                    Text("NomeResponsavel")
                         .font(.headline)
                         .foregroundColor(.black)
                     
-                    Text(moviment.data.formated())
+//                    Text(moviment.data.formated())
+                    Text("Data")
                         .font(.headline)
                         .foregroundColor(.black)
                 }
@@ -102,5 +105,6 @@ struct InfoModal: View {
 
 #Preview {
 //    InfoModal(movimentacao: .init(equipamentoNome: "equipamentoNome", responsavel: "responsavel", data: .now, descricao: "descricao", imagemNome: "imagemNome"), isPresented: .constant(true))
-    InfoModal(moviment: .init(equipamento: .init(nome: "Equipament Name", tipo: .informatica, quantidade: 10), data: .now, dataEntrega: .now, responsavel: "Responser"), isPresented: .constant(true))
+//    InfoModal(moviment: .init(equipamento: .init(nome: "Equipament Name", tipo: .informatica, quantidade: 10), data: .now, dataEntrega: .now, responsavel: "Responser"), isPresented: .constant(true))
+    InfoModal(isPresented: .constant(true))
 }
