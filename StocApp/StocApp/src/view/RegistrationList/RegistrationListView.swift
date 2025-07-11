@@ -7,8 +7,41 @@
 
 import SwiftUI
 
+
+struct Movi: Identifiable{
+    var id: UUID
+    var equipment: Equipment?
+    var loanDate: Date
+    var expectedReturnDate: Date
+    var responsible: String
+    
+    
+    //Inicializador da class Movement
+    
+    init(
+        id: UUID = UUID(),  //ID automático se não for fornecido
+        equipment: Equipment?, //equipamento que tem analogia com o movimento
+        loanDate: Date,  //data do dia que o user fez o empréstimo
+        expectedReturnDate: Date, // Dia da Devolução
+        responsible: String
+    ) {
+        self.id = id
+        self.equipment = equipment
+        self.loanDate = loanDate
+        self.expectedReturnDate = expectedReturnDate
+        self.responsible = responsible
+    }
+    static var exemplo: Movi {
+        return .init(
+            equipment: nil,
+            loanDate: Date(),
+            expectedReturnDate: Date(),
+            responsible: "")
+    }
+}
 struct RegistrationListView: View {
-    var registers: [Moviment] = [.exemplo, .exemplo, .exemplo, .exemplo]
+//    var registers: [Moviment] = [.exemplo, .exemplo, .exemplo, .exemplo]
+    var registers: [Movi] = [.exemplo, .exemplo, .exemplo, .exemplo]
     @State var isMonthlySelected: Bool = true
     var body: some View {
         ZStack {
@@ -47,10 +80,10 @@ struct RegistrationListView: View {
                 ScrollView {
                     VStack(spacing: 8) {
                         ForEach(registers) { registro in
-                            CardHome(nomeDoEquipamento: registro.equipamento.nome, dataDevolucao: "10/10/2010", responsavel: registro.responsavel )
-                                .onTapGesture {
-                                    print("clicou no item número \(String(describing: index))")
-                                }
+//                            CardHome(nomeDoEquipamento: registro.equipamento.nome, dataDevolucao: "10/10/2010", responsavel: registro.responsavel )
+//                                .onTapGesture {
+//                                    print("clicou no item número \(String(describing: index))")
+//                                }
                         }
                     }
                     .padding(.horizontal)
