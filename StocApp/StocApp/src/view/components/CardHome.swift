@@ -11,6 +11,7 @@ struct CardHome: View {
     var nomeDoEquipamento: String = "Macbook"
     var dataDevolucao: String = "14/07/2025"
     var responsavel: String = "Lais Godinho"
+    var onInfoTap: () -> Void = { }
     var body: some View {
         
         HStack{
@@ -27,7 +28,9 @@ struct CardHome: View {
                     Text(dataDevolucao)
                         .font(.system(size:14))
                         .foregroundStyle(.secondary)
-                    Button{} label: {
+                    Button{
+                        onInfoTap()
+                    } label: {
                         Image(systemName: "info.circle")
                             .foregroundStyle(.black )
                             .bold()
