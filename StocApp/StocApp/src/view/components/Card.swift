@@ -10,7 +10,7 @@ import SwiftUI
 struct Card: View {
     let title: String
     let iconName: String
-    let action: () -> Void
+    var action: () -> Void = {}
 
     var body: some View {
         Button(action: action) {
@@ -32,6 +32,7 @@ struct Card: View {
                     .foregroundColor(.black)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.bottom, 8)
+                    .multilineTextAlignment(.leading)
             }
             .padding()
             .frame(width: 120, height: 130)
