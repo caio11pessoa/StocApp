@@ -30,11 +30,6 @@ struct InfoModal: View {
     var body: some View {
         VStack(spacing: 16) {
             
-            Capsule()
-                .fill(Color.gray.opacity(0.4))
-                .frame(width: 40, height: 5)
-                .padding(.top,8)
-            
             HStack(alignment: .center, spacing: 16) {
                 Image(systemName: "person")
                     .resizable()
@@ -73,9 +68,9 @@ struct InfoModal: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
             }
+            .frame(width: .infinity, alignment: .leading)
             .padding()
             
-            Spacer()
             
             Button(action: {
                 print("Editar pressionado")
@@ -90,16 +85,10 @@ struct InfoModal: View {
                     .cornerRadius(20)
             }
             .padding(.horizontal)
-            .padding(.bottom, 20)
             .padding(.top, 20)
         }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 25)
-                .fill(Color.white)
-        )
-        .shadow(radius: 5)
-
+        .padding(.horizontal)
+        .ignoresSafeArea()
     }
 }
 

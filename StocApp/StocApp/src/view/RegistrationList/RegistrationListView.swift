@@ -7,10 +7,46 @@
 
 import SwiftUI
 
-
-struct Movi: Identifiable{
+class EquipmentStub: Identifiable{
     var id: UUID
-    var equipment: Equipment?
+    var name: String
+    var type: String
+    var quantity: Int
+    var idescription: String
+    var image: String
+    
+    init(
+        id: UUID = UUID(),
+        name: String,
+        type: String,
+        quantity: Int,
+        idescription: String,
+        image: String
+    ) {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.quantity = quantity
+        self.idescription = idescription
+        self.image = image
+    }
+    
+    static let example = EquipmentStub(
+        name: "Mouse",
+        type: "Informatics",
+        quantity: 5,
+        idescription: "Equipament used to perform actions on the screen",
+        image: "mouse_image"
+        
+        
+        
+    )
+    
+}
+
+struct MovimentStub: Identifiable{
+    var id: UUID
+    var equipment: EquipmentStub?
     var loanDate: Date
     var expectedReturnDate: Date
     var responsible: String
@@ -20,7 +56,7 @@ struct Movi: Identifiable{
     
     init(
         id: UUID = UUID(),  //ID automático se não for fornecido
-        equipment: Equipment?, //equipamento que tem analogia com o movimento
+        equipment: EquipmentStub?, //equipamento que tem analogia com o movimento
         loanDate: Date,  //data do dia que o user fez o empréstimo
         expectedReturnDate: Date, // Dia da Devolução
         responsible: String
@@ -31,59 +67,34 @@ struct Movi: Identifiable{
         self.expectedReturnDate = expectedReturnDate
         self.responsible = responsible
     }
-    static var exemplo: Movi {
+    static var exemplo: MovimentStub {
         return .init(
-            equipment: nil,
+            equipment: EquipmentStub.example,
             loanDate: Date(),
             expectedReturnDate: Date(),
             responsible: "")
     }
 }
 struct RegistrationListView: View {
-//    var registers: [Moviment] = [.exemplo, .exemplo, .exemplo, .exemplo]
-    var registers: [Movi] = [.exemplo, .exemplo, .exemplo, .exemplo]
+    //    var registers: [Moviment] = [.exemplo, .exemplo, .exemplo, .exemplo]
+    var registers: [MovimentStub] = [.exemplo, .exemplo, .exemplo, .exemplo, .exemplo, .exemplo, .exemplo, .exemplo]
     @State var isMonthlySelected: Bool = true
     var body: some View {
         ZStack {
             Color.backgroundView
                 .ignoresSafeArea()
             VStack {
-                //            HStack(spacing: 0) {
-                //                Button("Mensal") {
-                //                    withAnimation {
-                //                        isMonthlySelected = true
-                //                    }
-                //                }
-                //                .foregroundColor( .black)
-                //                .frame(maxWidth: .infinity)
-                //                .frame(height: 38)
-                //                .background(isMonthlySelected ? Color.white : Color.gray.opacity(0), in: RoundedRectangle(cornerRadius: 12))
-                //                .padding(4)
-                //                .shadow(radius: isMonthlySelected ? 2 : 0)
-                //
-                //                Button("Anual") {
-                //                    withAnimation {
-                //                        isMonthlySelected = false
-                //                    }
-                //                }
-                //                .foregroundColor( .black)
-                //                .frame(maxWidth: .infinity)
-                //                .frame(height: 38)
-                //                .background(!isMonthlySelected ? Color.white : Color.gray.opacity(0))
-                //                .padding(4)
-                //                .shadow(radius: !isMonthlySelected ? 2 : 0)
-                //            }
-                //            .frame(height: 48)
-                //            .background(Color(red: 118/225, green: 118/225, blue: 128/225, opacity: 0.12), in: RoundedRectangle(cornerRadius: 12))
+                
                 Toggle(isMonthlySelected: $isMonthlySelected)
                     .padding()
                 ScrollView {
                     VStack(spacing: 8) {
                         ForEach(registers) { registro in
-//                            CardHome(nomeDoEquipamento: registro.equipamento.nome, dataDevolucao: "10/10/2010", responsavel: registro.responsavel )
-//                                .onTapGesture {
-//                                    print("clicou no item número \(String(describing: index))")
-//                                }
+                            
+                            CardHome(nomeDoEquipamento: registro.equipment?.name ?? "Nada", dataDevolucao: "10/10/2010", responsavel: registro.responsible)
+                                .onTapGesture {
+                                    print("clicou no item número \(String(describing: index))")
+                                }
                         }
                     }
                     .padding(.horizontal)

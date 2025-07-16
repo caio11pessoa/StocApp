@@ -36,9 +36,7 @@ struct TagView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(tags) { tag in
-                    Card(title: tag.tagName, iconName: tag.imageName) {
-                        
-                    }
+                    Card(title: tag.tagName, iconName: tag.imageName) 
                 }
             }
             .padding()
