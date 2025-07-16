@@ -25,7 +25,7 @@ struct HomeView: View {
                     HStack{
                         Group {
                             NavigationLink {
-                                // Tela
+                                NewRegistration()
                             } label: {
                                 Card(title: "Novo Registro", iconName: "rectangle.portrait.and.arrow.right")
                             }
